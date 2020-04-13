@@ -14,3 +14,7 @@ index.js
 
 API Gateway service (not included here)
  - API helps in handling protocol translations, and is especially useful when clients built with microservices make use of multiple,       disparate APIs.
+
+
+Architecture overview: 
+
