@@ -6,3 +6,5 @@ The context of this project can be apply in our daily life application, such as:
   1. Sign-up / Sign-in user in social media.
   2. Bookmark items(s) into a cart before purchase/ make order. 
   3. and many more
+
+index.js file 
