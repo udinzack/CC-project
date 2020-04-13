@@ -17,4 +17,5 @@ API Gateway service (not included here)
 
 
 Architecture overview: 
+![](arch.png)
 
