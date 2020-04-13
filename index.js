@@ -1,9 +1,6 @@
 exports.handler = async (event) => {
     console.log(event);
-    if (event.httpMethod === 'PUT') {
-        let response = await putMovie(event)
-        return done(response);
-    } else if (event.httpMethod === 'GET') {
+    if (event.httpMethod === 'GET') {
         let response = await getMovie(event);
         return done(response);
     }
