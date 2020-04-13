@@ -9,7 +9,8 @@ The context of this project can be apply in our daily life application, such as:
 
 index.js
 - this code is written in our Lambda function.
-- it serve as a medium to communicate with the API 
+- it serve as a medium to communicate with the API.
+- in our example here, we built a simple, hard-code input to show how the flow will looks like.
 
 API Gateway service (not included here)
- - 
+ - API helps in handling protocol translations, and is especially useful when clients built with microservices make use of multiple,       disparate APIs.
