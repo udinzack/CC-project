@@ -7,4 +7,6 @@ The context of this project can be apply in our daily life application, such as:
   2. Bookmark items(s) into a cart before purchase/ make order. 
   3. and many more
 
-index.js file 
+index.js file:
+   this is written in Lambda function.
+  - 
