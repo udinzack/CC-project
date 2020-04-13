@@ -1,33 +1,51 @@
 exports.handler = async (event) => {
-    if (event.httpMethod ==='GET') {
-        return getItem(event);
-    }
-    if (event.httpMethod =='POST') {
-        return createCart(event);
+    console.log(event);
+    if (event.httpMethod === 'PUT') {
+        let response = await putMovie(event)
+        return done(response);
+    } else if (event.httpMethod === 'GET') {
+        let response = await getMovie(event);
+        return done(response);
     }
 };
 
-    const getItem = event => {
-        let item = {
-            description: ' A blue pant',
-            colour: ' blue',
-            size: ' Large',
-            price: 'RM 25'
-        };
-        return {
-            statusCode: 200,
-            body: JSON.stringify(item)
-        };
-    }
-    
-    const createCart = event => {
-        let body = JSON.parse(event.body);
-        console.log('This was the cart item that being passed out',body);
-        return {
-            statusCode:200,
-            body: JSON.stringify({
-                message:'The cart was created'
-            })
+const done = response => {
+    return {
+        statusCode: '200',
+        body: JSON.stringify(response),
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Methods': '*',
+            'Access-Control-Allow-Origin': '*'
         }
-    };
-    
+    }
+}
+
+const movies = {
+    action: 'Desperado (1995)',
+    fantasy: 'Inception (2010)',
+    animated: ' Peter Pan (1953)',
+    western: 'The Good, the Bad and the Ugly (1966)',
+    superhero: 'The Dark Knight (2008)',
+    musical: 'The Rocky Horror Picture Show (1975)',
+    crime: 'Pulp Fiction (1994)',
+    comedy: 'The Naked Gun: From the Files of Police Squad! (1988)',
+    adventure: 'Raiders of the Lost Ark (1981)',
+    war: 'The Guns of Navarone (1961)',
+    guy: 'The Expendables (2010)',
+    romance: 'True Romance (1993)',
+    thriller: 'Psycho (1960)',
+    horror: 'Black Swan (2010)'
+}
+
+const getMovie = event => {
+    let genre = event.pathParameters.genre;
+    return movies[genre];
+}
+
+const putMovie = async event => {
+    let { movie } = JSON.parse(event.body);
+    let genre = event.pathParameters.genre;
+    let ID = `${movie}-${genre}`;
+    return Dynamo.increment(ID, 'movie-api')
+}
