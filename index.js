@@ -39,10 +39,3 @@ const getMovie = event => {
     let genre = event.pathParameters.genre;
     return movies[genre];
 }
-
-const putMovie = async event => {
-    let { movie } = JSON.parse(event.body);
-    let genre = event.pathParameters.genre;
-    let ID = `${movie}-${genre}`;
-    return Dynamo.increment(ID, 'movie-api')
-}
